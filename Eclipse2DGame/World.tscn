@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://TileMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/enemyOrc.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Art/FuentesLetra/Seagram tfb.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/MenuPausa.tscn" type="PackedScene" id=5]
+[ext_resource path="res://BackGround/Background_1.png" type="Texture" id=6]
+[ext_resource path="res://BackGround/Background_0.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+outline_size = 1
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MenuPausa" parent="." instance=ExtResource( 5 )]
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 50, 217 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+
+[node name="OrcEnemy" parent="." groups=["Enemy"] instance=ExtResource( 3 )]
+position = Vector2( 724, 124 )
+
+[node name="orcEnemy" parent="." groups=["Enemy"] instance=ExtResource( 3 )]
+position = Vector2( 525, 324 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 350.0
+margin_top = 25.0
+margin_right = 680.0
+margin_bottom = 76.0
+custom_colors/font_color = Color( 0.941176, 0.772549, 0.0352941, 1 )
+custom_colors/font_outline_modulate = Color( 0.372549, 0.137255, 0.0117647, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Los eclipses solares ocurren cuando la Luna
+se coloca entre el Sol y la Tierra."
+
+[node name="TileMap" parent="." instance=ExtResource( 1 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 1843, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( -765, -399 )
+scale = Vector2( 2.4, 2.4 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 1382, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( -438, -215 )
+scale = Vector2( 1.8, 1.8 )
+texture = ExtResource( 6 )
+centered = false

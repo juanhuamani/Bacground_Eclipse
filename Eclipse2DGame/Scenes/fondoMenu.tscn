@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Art/Fondos/solar-eclipses.jpg" type="Texture" id=1]
+[ext_resource path="res://Scenes/Scrips/fondoMenu.gd" type="Script" id=2]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource( 2 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 950, 540 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 474, 283 )
+scale = Vector2( 0.497917, 0.534259 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 960, 540 )
+
+[connection signal="hide" from="ParallaxLayer" to="." method="_on_ParallaxLayer_hide"]

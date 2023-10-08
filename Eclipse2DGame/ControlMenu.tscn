@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/fondoMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/FuentesLetra/FuenteMedieval.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ControlMenu.gd" type="Script" id=3]
+[ext_resource path="res://Art/Fondos/logoMoonMonsters.png" type="Texture" id=4]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -125.0
+margin_top = -257.0
+margin_right = 126.0
+margin_bottom = -9.0
+texture = ExtResource( 4 )
+
+[node name="VBoxBotones" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -261.0
+margin_right = 1.0
+margin_bottom = -58.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="Jugar" type="Button" parent="VBoxBotones"]
+margin_right = 960.0
+margin_bottom = 51.0
+custom_colors/font_color_hover = Color( 1, 0.0470588, 0.0470588, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Jugar"
+flat = true
+
+[node name="Historia" type="Button" parent="VBoxBotones"]
+margin_top = 76.0
+margin_right = 960.0
+margin_bottom = 127.0
+custom_colors/font_color_hover = Color( 1, 0.0470588, 0.0470588, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Historia"
+flat = true
+
+[node name="Salir" type="Button" parent="VBoxBotones"]
+margin_top = 152.0
+margin_right = 960.0
+margin_bottom = 203.0
+custom_colors/font_color_hover = Color( 1, 0.054902, 0.054902, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Salir"
+flat = true
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 1 )]
+
+[connection signal="pressed" from="VBoxBotones/Jugar" to="." method="_on_Jugar_pressed"]
+[connection signal="pressed" from="VBoxBotones/Jugar" to="ParallaxBackground" method="_on_Jugar_pressed"]
+[connection signal="pressed" from="VBoxBotones/Historia" to="." method="_on_Historia_pressed"]
+[connection signal="pressed" from="VBoxBotones/Historia" to="ParallaxBackground" method="_on_Jugar_pressed"]
+[connection signal="pressed" from="VBoxBotones/Salir" to="." method="_on_Salir_pressed"]
